@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import { Routes, Route } from 'react-router-dom';
+import SubmissionForm from './pages/SubmissionForm';
+import SubmissionStatus from './pages/SubmissionStatus';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const routes = [
+  { path: '/', element: <SubmissionStatus /> },
+  { path: '/submit', element: <SubmissionForm /> },
+  { path: '/status', element: <SubmissionStatus /> },
+];
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        {routes.map(({ path, element }) => {
+          return <Route key={path} path={path} element={element} />;
+        })}
+      </Routes>
+    </QueryClientProvider>
   );
 }
 
