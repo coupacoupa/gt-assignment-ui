@@ -2,8 +2,8 @@ import { Box, Button, Grid, Paper, TextField } from '@mui/material';
 import { eventNames } from 'process';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useCreateNewSubmission } from '../../../../common/hooks/submission';
-import { ISubmissionForm } from '../../../../common/types/submission';
+import { useCreateNewSubmission } from '../../../../hooks/submission';
+import { ISubmissionForm } from '../../../../types/submission';
 import { FormInputText, FormInputMultiText } from '../../../../components/ReactHookFormInputs';
 
 const Form = () => {

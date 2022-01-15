@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCreateNewSubmission } from '../../common/hooks/submission';
+import { useCreateNewSubmission } from '../../hooks/submission';
 import Form from './components/Form';
 
 const SubmissionForm = () => {

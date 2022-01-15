@@ -4,7 +4,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
-import { ISubmissionStatus } from '../../../../common/types/submission';
+import { ISubmissionStatus } from '../../../../types/submission';
 
 interface IProps {
   submissionStatus: ISubmissionStatus[];
@@ -29,25 +29,26 @@ export default function ControlledAccordions(props: IProps) {
         </AccordionSummary>
       </Accordion>
 
-      {submissionStatus.map((obj) => {
-        const { submissionNo, createdDate, feedbackStatus, feedback } = obj;
-        const key = submissionNo.toString();
+      {submissionStatus &&
+        submissionStatus.map((obj) => {
+          const { submissionNo, createdDate, feedbackStatus, feedback } = obj;
+          const key = submissionNo.toString();
 
-        return (
-          <Accordion expanded={expanded === key} onChange={handleChange(key)}>
-            <AccordionSummary aria-controls={key + 'bh-content'} id={key + 'bh-header'}>
-              <Typography sx={{ width: '33%', flexShrink: 0 }}>{submissionNo}</Typography>
-              <Typography sx={{ width: '33%', flexShrink: 0, color: 'text.secondary' }}>{feedbackStatus}</Typography>
-              <Typography sx={{ width: '33%', color: 'text.secondary' }}>{createdDate}</Typography>
-              <Button>Info</Button>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>Feedback</Typography>
-              <Typography>{feedback}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        );
-      })}
+          return (
+            <Accordion expanded={expanded === key} onChange={handleChange(key)}>
+              <AccordionSummary aria-controls={key + 'bh-content'} id={key + 'bh-header'}>
+                <Typography sx={{ width: '33%', flexShrink: 0 }}>{submissionNo}</Typography>
+                <Typography sx={{ width: '33%', flexShrink: 0, color: 'text.secondary' }}>{feedbackStatus}</Typography>
+                <Typography sx={{ width: '33%', color: 'text.secondary' }}>{createdDate}</Typography>
+                <Button>Info</Button>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>Feedback</Typography>
+                <Typography>{feedback}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          );
+        })}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import PersistentDrawerLeft from './components/PersistentDrawerLeft';
+import PersistentDrawerLeft from './modules/PersistentDrawerLeft';
 import { routesData } from './routes/routesData';
 
 const queryClient = new QueryClient();

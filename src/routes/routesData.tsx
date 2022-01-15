@@ -1,4 +1,4 @@
-import { IRouteItem } from '../common/types/routes';
+import { IRouteItem } from '../types/routes';
 import SubmissionForm from '../pages/SubmissionForm';
 import SubmissionStatus from '../pages/SubmissionStatus';
 

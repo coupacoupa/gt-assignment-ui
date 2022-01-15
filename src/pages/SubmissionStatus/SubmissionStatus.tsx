@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useGetAllUserSubmission } from '../../common/hooks/submission';
-import { ISubmissionStatus } from '../../common/types/submission';
+import { useGetAllUserSubmission } from '../../hooks/submission';
+import { ISubmissionStatus } from '../../types/submission';
 import Accordion from './components/Accordion';
 
 const SubmissionStatus = () => {
