@@ -18,6 +18,8 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Container } from '@mui/material';
+import { routesData } from '../../routes/routesData';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
   children: JSX.Element;
@@ -76,6 +78,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft(props: IProps) {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -125,21 +128,22 @@ export default function PersistentDrawerLeft(props: IProps) {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {routesData
+            .filter((item) => {
+              return item.showOnMenu;
+            })
+            .map((routeItem, index) => (
+              <ListItem
+                button
+                key={routeItem.path}
+                onClick={() => {
+                  navigate(routeItem.path);
+                }}
+              >
+                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={routeItem.label} />
+              </ListItem>
+            ))}
         </List>
       </Drawer>
       <Main open={open}>

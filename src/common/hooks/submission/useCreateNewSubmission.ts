@@ -15,6 +15,6 @@ const createNewSubmission = async (submissionForm: ISubmissionForm) => {
   return data;
 };
 
-export default function useCreateNewSubmission(submissionForm: ISubmissionForm) {
-  return useMutation('getAllUserSubmissions', () => createNewSubmission(submissionForm));
+export default function useCreateNewSubmission() {
+  return useMutation((submissionForm: ISubmissionForm) => createNewSubmission(submissionForm));
 }
