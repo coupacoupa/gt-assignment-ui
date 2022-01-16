@@ -7,7 +7,6 @@ interface IProps {
   control: any;
   label?: string;
   setValue?: any;
-  required: boolean;
 }
 
 const FormInputText = (props: IProps) => {
@@ -17,8 +16,9 @@ const FormInputText = (props: IProps) => {
     <Controller
       name={name}
       control={control}
-      rules={{ required: true }}
-      render={({ field }) => <TextField {...field} label={label} fullWidth />}
+      render={({ field, fieldState: { error } }) => (
+        <TextField {...field} label={label} fullWidth error={!!error} helperText={error?.message || null} />
+      )}
       defaultValue=""
     />
   );

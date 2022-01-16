@@ -7,7 +7,6 @@ interface IProps {
   control: any;
   label?: string;
   setValue?: any;
-  required: boolean;
 }
 
 const FormInputMultiText = (props: IProps) => {
@@ -17,8 +16,17 @@ const FormInputMultiText = (props: IProps) => {
     <Controller
       name={name}
       control={control}
-      rules={{ required: true }}
-      render={({ field }) => <TextField {...field} label={label} multiline rows={8} fullWidth />}
+      render={({ field, fieldState: { error } }) => (
+        <TextField
+          {...field}
+          label={label}
+          multiline
+          rows={8}
+          fullWidth
+          error={!!error}
+          helperText={error?.message || null}
+        />
+      )}
     />
   );
 };
