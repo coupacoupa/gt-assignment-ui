@@ -4,7 +4,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
-import { ISubmissionResponse, ISubmissionStatus } from '../../../../types/submission';
+import { ISubmissionResponse, ISubmissionStatus } from '../../../../common/types/submission';
 import dayjs from 'dayjs';
 import AccordionPagination from '../AccordionPagination/AccordionPagination';
 
@@ -23,7 +23,7 @@ export default function ControlledAccordions(props: IProps) {
 
   return (
     <div>
-      <Accordion expanded={false}>
+      <Accordion elevation={3} expanded={false}>
         <AccordionSummary>
           <Typography sx={{ width: '20%', flexShrink: 0 }}>ID</Typography>
           <Typography sx={{ width: '30%', flexShrink: 0 }}>Status</Typography>
@@ -36,7 +36,7 @@ export default function ControlledAccordions(props: IProps) {
         const key = submissionNo.toString();
 
         return (
-          <Accordion key={key} expanded={expanded === key} onChange={handleChange(key)}>
+          <Accordion elevation={2} key={key} expanded={expanded === key} onChange={handleChange(key)}>
             <AccordionSummary aria-controls={key + 'bh-content'} id={key + 'bh-header'}>
               <Typography sx={{ width: '20%', flexShrink: 0 }}>{submissionNo}</Typography>
               <Typography sx={{ width: '30%', flexShrink: 0, color: 'text.secondary' }}>{feedbackStatus}</Typography>

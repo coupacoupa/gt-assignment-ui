@@ -17,9 +17,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { Container } from '@mui/material';
+import { Button, Container, Menu, MenuItem, Paper } from '@mui/material';
 import { routesData } from '../../routes/routesData';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { AccountCircle } from '@mui/icons-material';
+import { useUser } from '../../common/contexts/userContext';
 
 interface IProps {
   children: JSX.Element;
@@ -44,6 +47,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
     }),
     marginLeft: 0,
   }),
+  backgroundColor: '#f4f5fd',
 }));
 
 interface AppBarProps extends MuiAppBarProps {
@@ -76,10 +80,14 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
+const paperStyle = { padding: 20, margin: '10px auto' };
+
 export default function PersistentDrawerLeft(props: IProps) {
   const theme = useTheme();
   const navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
+  const { currentUser, setCurrentUser } = useUser();
+  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -87,6 +95,14 @@ export default function PersistentDrawerLeft(props: IProps) {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -103,9 +119,48 @@ export default function PersistentDrawerLeft(props: IProps) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Submission Portal
           </Typography>
+          {currentUser?.contactNumber && currentUser?.email ? (
+            <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={() => setCurrentUser({ contactNumber: undefined, email: undefined })}>
+                  Logout
+                </MenuItem>
+              </Menu>
+            </div>
+          ) : (
+            <div>
+              <Button color="inherit" onClick={() => navigate('/login')}>
+                Login
+              </Button>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -148,7 +203,11 @@ export default function PersistentDrawerLeft(props: IProps) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Container maxWidth="md">{props.children}</Container>
+        <Container maxWidth="md">
+          <Paper elevation={1} style={paperStyle}>
+            {props.children}
+          </Paper>
+        </Container>
       </Main>
     </Box>
   );
