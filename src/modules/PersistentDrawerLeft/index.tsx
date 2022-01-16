@@ -104,7 +104,7 @@ export default function PersistentDrawerLeft(props: IProps) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            Submission Portal
           </Typography>
         </Toolbar>
       </AppBar>

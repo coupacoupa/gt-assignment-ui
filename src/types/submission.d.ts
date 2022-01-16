@@ -1,3 +1,8 @@
+export interface ISubmissionResponse {
+  totalCount: number;
+  submissions: ISubmissionStatus[];
+}
+
 export interface ISubmissionStatus extends ISubmissionForm {
   submissionNo: number;
   feedbackStatus: string;

@@ -4,14 +4,16 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
-import { ISubmissionStatus } from '../../../../types/submission';
+import { ISubmissionResponse, ISubmissionStatus } from '../../../../types/submission';
+import dayjs from 'dayjs';
+import AccordionPagination from '../AccordionPagination/AccordionPagination';
 
 interface IProps {
-  submissionStatus: ISubmissionStatus[];
+  submissionStatus: ISubmissionResponse;
 }
 
 export default function ControlledAccordions(props: IProps) {
-  const { submissionStatus } = props;
+  const { submissionStatus: { submissions = [] } = {} } = props || {};
 
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
@@ -23,32 +25,33 @@ export default function ControlledAccordions(props: IProps) {
     <div>
       <Accordion expanded={false}>
         <AccordionSummary>
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>Submission Number</Typography>
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>Status</Typography>
-          <Typography sx={{}}>Submission Date</Typography>
+          <Typography sx={{ width: '20%', flexShrink: 0 }}>ID</Typography>
+          <Typography sx={{ width: '30%', flexShrink: 0 }}>Status</Typography>
+          <Typography sx={{}}>Submitted</Typography>
         </AccordionSummary>
       </Accordion>
 
-      {submissionStatus &&
-        submissionStatus.map((obj) => {
-          const { submissionNo, createdDate, feedbackStatus, feedback } = obj;
-          const key = submissionNo.toString();
+      {submissions.map((obj) => {
+        const { submissionNo, createdDate, feedbackStatus, feedback } = obj;
+        const key = submissionNo.toString();
 
-          return (
-            <Accordion expanded={expanded === key} onChange={handleChange(key)}>
-              <AccordionSummary aria-controls={key + 'bh-content'} id={key + 'bh-header'}>
-                <Typography sx={{ width: '33%', flexShrink: 0 }}>{submissionNo}</Typography>
-                <Typography sx={{ width: '33%', flexShrink: 0, color: 'text.secondary' }}>{feedbackStatus}</Typography>
-                <Typography sx={{ width: '33%', color: 'text.secondary' }}>{createdDate}</Typography>
-                <Button>Info</Button>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>Feedback</Typography>
-                <Typography>{feedback}</Typography>
-              </AccordionDetails>
-            </Accordion>
-          );
-        })}
+        return (
+          <Accordion key={key} expanded={expanded === key} onChange={handleChange(key)}>
+            <AccordionSummary aria-controls={key + 'bh-content'} id={key + 'bh-header'}>
+              <Typography sx={{ width: '20%', flexShrink: 0 }}>{submissionNo}</Typography>
+              <Typography sx={{ width: '30%', flexShrink: 0, color: 'text.secondary' }}>{feedbackStatus}</Typography>
+              <Typography sx={{ width: '30%', color: 'text.secondary' }}>
+                {dayjs(createdDate).format('DD MMM YYYY H:mm A')}
+              </Typography>
+              <Button sx={{ width: '20%' }}>More</Button>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>Feedback</Typography>
+              <Typography>{feedback}</Typography>
+            </AccordionDetails>
+          </Accordion>
+        );
+      })}
     </div>
   );
 }

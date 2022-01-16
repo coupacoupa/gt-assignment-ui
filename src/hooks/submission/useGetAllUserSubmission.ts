@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
-export const getAllUserSubmission = async (email: string, contactNumber: string) => {
+export const getAllUserSubmission = async (email: string, contactNumber: string, page: number, size: number) => {
   const response = await axios
     .get('http://localhost:8080/api/v1/submissions', {
       headers: {
@@ -10,6 +10,8 @@ export const getAllUserSubmission = async (email: string, contactNumber: string)
       params: {
         email,
         contactNumber,
+        page,
+        size,
       },
     })
     .then((response) => {
@@ -22,6 +24,6 @@ export const getAllUserSubmission = async (email: string, contactNumber: string)
   return response.data;
 };
 
-export default function useGetAllUserSubmission(email: string, contactNumber: string) {
-  return useQuery('getAllUserSubmissions', () => getAllUserSubmission(email, contactNumber));
+export default function useGetAllUserSubmission(email: string, contactNumber: string, page: number, size: number) {
+  return useQuery('getAllUserSubmissions', () => getAllUserSubmission(email, contactNumber, page, size));
 }
