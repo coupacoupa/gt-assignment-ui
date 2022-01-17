@@ -1,5 +1,5 @@
-import { useQuery } from 'react-query';
 import axios from 'axios';
+import { useQuery } from 'react-query';
 
 export const getAllUserSubmission = async (email: string, contactNumber: string, page: number, size: number) => {
   const response = await axios

@@ -1,5 +1,5 @@
+import { IUser } from 'common/types/user';
 import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react';
-import { IUser } from '../types/user';
 
 interface IContext {
   currentUser: IUser;

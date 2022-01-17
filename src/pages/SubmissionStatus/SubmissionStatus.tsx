@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useGetAllUserSubmission } from '../../common/hooks/submission';
-import PaperHeader from '../../modules/PageHeader';
+import { useUser } from 'common/contexts/userContext';
+import { useGetAllUserSubmission } from 'common/hooks/submission';
+import PaperHeader from 'modules/PageHeader';
+import React, { useEffect } from 'react';
 import Accordion from './components/Accordion';
 import AccordionPagination from './components/AccordionPagination';
-import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded';
-import { useUser } from '../../common/contexts/userContext';
 
 const SubmissionStatus = () => {
   const [page, setPage] = React.useState(0);

@@ -1,6 +1,5 @@
+import PaperHeader from 'modules/PageHeader';
 import React from 'react';
-import { useCreateNewSubmission } from '../../common/hooks/submission';
-import PaperHeader from '../../modules/PageHeader';
 import Form from './components/Form';
 
 const SubmissionForm = () => {

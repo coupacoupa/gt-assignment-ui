@@ -1,6 +1,6 @@
-import { useMutation } from 'react-query';
 import axios from 'axios';
-import { ISubmissionForm } from '../../types/submission';
+import { ISubmissionForm } from 'common/types/submission';
+import { useMutation } from 'react-query';
 
 const createNewSubmission = async (submissionForm: ISubmissionForm) => {
   const { data } = await axios

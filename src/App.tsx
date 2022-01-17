@@ -1,10 +1,9 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import { UserProvider } from './common/contexts/userContext';
 import PersistentDrawerLeft from './modules/PersistentDrawerLeft';
 import { routesData } from './routes/routesData';
-import { useContext } from 'react';
-import { UserProvider } from './common/contexts/userContext';
 
 const queryClient = new QueryClient();
 

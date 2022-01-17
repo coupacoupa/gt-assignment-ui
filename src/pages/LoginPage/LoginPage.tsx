@@ -1,4 +1,4 @@
-import PaperHeader from '../../modules/PageHeader';
+import PaperHeader from 'modules/PageHeader';
 import LoginForm from './components/Form';
 
 const LoginPage = () => {

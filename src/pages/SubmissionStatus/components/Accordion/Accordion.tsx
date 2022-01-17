@@ -1,12 +1,11 @@
-import * as React from 'react';
+import { Button } from '@mui/material';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
-import { ISubmissionResponse, ISubmissionStatus } from '../../../../common/types/submission';
+import { ISubmissionResponse } from 'common/types/submission';
 import dayjs from 'dayjs';
-import AccordionPagination from '../AccordionPagination/AccordionPagination';
+import * as React from 'react';
 
 interface IProps {
   submissionStatus: ISubmissionResponse;

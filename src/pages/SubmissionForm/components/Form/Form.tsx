@@ -1,15 +1,13 @@
-import { Box, Button, Grid, Paper, TextField } from '@mui/material';
-import { eventNames } from 'process';
-import React, { useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { useCreateNewSubmission } from '../../../../common/hooks/submission';
-import { ISubmissionForm } from '../../../../common/types/submission';
-import { FormInputText, FormInputMultiText } from '../../../../common/components/ReactHookFormInputs';
-import LoadingButton from '../../../../common/components/Buttons/ProgressButton';
-import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { submissionFormSchema } from '../../../../common/utils/formValidationUtil';
-import { padding } from '@mui/system';
+import { Box } from '@mui/material';
+import LoadingButton from 'common/components/Buttons/ProgressButton';
+import { FormInputMultiText, FormInputText } from 'common/components/ReactHookFormInputs';
+import { useCreateNewSubmission } from 'common/hooks/submission';
+import { ISubmissionForm } from 'common/types/submission';
+import { submissionFormSchema } from 'common/utils/formValidationUtil';
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
   const navigate = useNavigate();

@@ -1,13 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box } from '@mui/material';
+import LoadingButton from 'common/components/Buttons/ProgressButton';
+import { FormInputText } from 'common/components/ReactHookFormInputs';
+import { useUser } from 'common/contexts/userContext';
+import { IUser } from 'common/types/user';
+import { loginFormSchema } from 'common/utils/formValidationUtil';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import LoadingButton from '../../../../common/components/Buttons/ProgressButton';
-import { FormInputText } from '../../../../common/components/ReactHookFormInputs';
-import { useUser } from '../../../../common/contexts/userContext';
-import { IUser } from '../../../../common/types/user';
-import { loginFormSchema } from '../../../../common/utils/formValidationUtil';
 
 const LoginForm = () => {
   const navigate = useNavigate();
