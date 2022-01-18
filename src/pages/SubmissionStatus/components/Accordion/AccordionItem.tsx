@@ -1,6 +1,6 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, Typography } from '@mui/material';
 import { ISubmissionStatus } from 'common/types/submission';
-import dayjs from 'dayjs';
+import dateUtil from 'common/utils/dateUtil';
 
 interface IProps {
   expanded: string | false;
@@ -22,7 +22,7 @@ const AccordionItem = (props: IProps) => {
         <Typography sx={{ width: '20%', flexShrink: 0 }}>{submissionNo}</Typography>
         <Typography sx={{ width: '30%', flexShrink: 0, color: 'text.secondary' }}>{feedbackStatus}</Typography>
         <Typography sx={{ width: '30%', color: 'text.secondary' }}>
-          {dayjs(createdDate).format('DD MMM YYYY H:mm A')}
+          {dateUtil.getFormattedDateFromISO(createdDate)}
         </Typography>
         <Button sx={{ width: '20%' }}>More</Button>
       </AccordionSummary>
