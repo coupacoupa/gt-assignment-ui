@@ -8,20 +8,16 @@ interface IProps {
 
 const PaperHeader = (props: IProps) => {
   const { title, subTitle } = props;
+
   return (
-    <Paper elevation={0} square className={'root'}>
-      <div className={'pageHeader'}>
-        <div className={'pageTitle'}>
-          <Typography variant="h6" component="div">
-            {title}
-          </Typography>
-          <Typography variant="subtitle2" component="div">
-            {subTitle}
-          </Typography>
-        </div>
-        <div className={'pageChildren'}></div>
-      </div>
-    </Paper>
+    <div className={'pageHeader'}>
+      <Typography variant="h4" component="div">
+        {title}
+      </Typography>
+      <Typography variant="subtitle2" component="div">
+        {subTitle}
+      </Typography>
+    </div>
   );
 };
 

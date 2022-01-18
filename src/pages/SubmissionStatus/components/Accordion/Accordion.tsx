@@ -7,6 +7,7 @@ import { ISubmissionResponse } from 'common/types/submission';
 import dayjs from 'dayjs';
 import * as React from 'react';
 import { useState } from 'react';
+import AccordionHeader from './AccordionHeader';
 import AccordionItem from './AccordionItem';
 
 interface IProps {
@@ -24,13 +25,7 @@ export default function ControlledAccordions(props: IProps) {
 
   return (
     <div>
-      <Accordion elevation={3} expanded={false}>
-        <AccordionSummary>
-          <Typography sx={{ width: '20%', flexShrink: 0 }}>ID</Typography>
-          <Typography sx={{ width: '30%', flexShrink: 0 }}>Status</Typography>
-          <Typography sx={{}}>Submitted</Typography>
-        </AccordionSummary>
-      </Accordion>
+      <AccordionHeader />
 
       {submissions.map((obj) => {
         return <AccordionItem expanded={expanded} handleChange={handleChange} submission={obj} />;
