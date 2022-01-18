@@ -1,18 +1,21 @@
 import axios from 'axios';
+import endpoints from 'common/constants/endpointConstants';
 import { useQuery } from 'react-query';
 
-export const getAllUserSubmission = async (email: string, contactNumber: string, page: number, size: number) => {
+interface IParams {
+  email: string;
+  contactNumber: string;
+  page: number;
+  size: number;
+}
+
+export const getAllUserSubmission = async (params: IParams) => {
   const response = await axios
-    .get('http://localhost:8080/api/v1/submissions', {
+    .get(endpoints.getAllSubmissions, {
       headers: {
         'Content-Type': 'application/json',
       },
-      params: {
-        email,
-        contactNumber,
-        page,
-        size,
-      },
+      params,
     })
     .then((response) => {
       return response.data;
@@ -24,6 +27,6 @@ export const getAllUserSubmission = async (email: string, contactNumber: string,
   return response.data;
 };
 
-export default function useGetAllUserSubmission(email: string, contactNumber: string, page: number, size: number) {
-  return useQuery('getAllUserSubmissions', () => getAllUserSubmission(email, contactNumber, page, size));
+export default function useGetAllUserSubmission(params: IParams) {
+  return useQuery('getAllUserSubmissions', () => getAllUserSubmission(params));
 }

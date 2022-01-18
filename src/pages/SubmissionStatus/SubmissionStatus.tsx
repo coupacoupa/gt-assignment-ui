@@ -12,7 +12,12 @@ const SubmissionStatus = () => {
   const {
     currentUser: { contactNumber = '', email = '' },
   } = useUser();
-  const { isLoading, isError, data, error, refetch } = useGetAllUserSubmission(email, contactNumber, page, rowsPerPage);
+  const { isLoading, isError, data, error, refetch } = useGetAllUserSubmission({
+    email,
+    contactNumber,
+    page,
+    size: rowsPerPage,
+  });
 
   useEffect(() => {
     refetch();
