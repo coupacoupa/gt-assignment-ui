@@ -48,6 +48,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
     marginLeft: 0,
   }),
   backgroundColor: '#f4f5fd',
+  height: '100vh',
 }));
 
 interface AppBarProps extends MuiAppBarProps {
@@ -209,11 +210,7 @@ export default function PersistentDrawerLeft(props: IProps) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Container maxWidth="md">
-          <Paper elevation={1} style={paperStyle}>
-            {props.children}
-          </Paper>
-        </Container>
+        {props.children}
       </Main>
     </Box>
   );

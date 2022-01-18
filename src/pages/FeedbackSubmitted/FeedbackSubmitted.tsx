@@ -1,5 +1,11 @@
+import PageContainer from 'modules/PageContainer';
+
 const FeedbackSubmitted = () => {
-  return <div>Feedback submitted successfully</div>;
+  return (
+    <PageContainer maxWidth={'sm'}>
+      <>Feedback submitted successfully</>
+    </PageContainer>
+  );
 };
 
 export default FeedbackSubmitted;

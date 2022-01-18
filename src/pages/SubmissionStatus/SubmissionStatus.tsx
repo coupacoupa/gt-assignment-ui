@@ -1,5 +1,6 @@
 import { useUser } from 'common/contexts/userContext';
 import { useGetAllUserSubmission } from 'common/hooks/submission';
+import PageContainer from 'modules/PageContainer';
 import PaperHeader from 'modules/PageHeader';
 import React, { useEffect } from 'react';
 import Accordion from './components/Accordion';
@@ -27,17 +28,19 @@ const SubmissionStatus = () => {
   };
 
   return (
-    <div>
-      <PaperHeader title={'Submission Status'} subTitle={'View all your submission status'} />
-      <Accordion submissionStatus={data} />
-      <AccordionPagination
-        page={page}
-        rowsPerPage={rowsPerPage}
-        count={data?.totalCount || 0}
-        handleChangePage={handleChangePage}
-        handleChangeRowsPerPage={handleChangeRowsPerPage}
-      />
-    </div>
+    <PageContainer maxWidth={'md'}>
+      <>
+        <PaperHeader title={'Submission Status'} subTitle={'View all your submission status'} />
+        <Accordion submissionStatus={data} />
+        <AccordionPagination
+          page={page}
+          rowsPerPage={rowsPerPage}
+          count={data?.totalCount || 0}
+          handleChangePage={handleChangePage}
+          handleChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+      </>
+    </PageContainer>
   );
 };
 

@@ -27,7 +27,7 @@ const Form = () => {
   return (
     <Box
       sx={{
-        '& .MuiTextField-root': { my: 1 },
+        '& .MuiTextField-root': { my: 0.5 },
       }}
     >
       <FormInputText name="name" control={control} label="Name" />

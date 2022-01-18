@@ -14,7 +14,7 @@ const LoadingButton = (props: IProps) => {
   const { isLoading, onClick, label } = props;
 
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box sx={{ position: 'relative', paddingTop: 1 }}>
       <Button variant="contained" disabled={isLoading} onClick={onClick} fullWidth>
         {label}
       </Button>

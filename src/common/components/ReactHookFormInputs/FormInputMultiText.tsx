@@ -18,6 +18,7 @@ const FormInputMultiText = (props: IProps) => {
       render={({ field, fieldState: { error } }) => (
         <TextField
           {...field}
+          size="small"
           label={label}
           multiline
           rows={8}

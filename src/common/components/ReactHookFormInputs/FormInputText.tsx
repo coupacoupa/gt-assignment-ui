@@ -16,7 +16,14 @@ const FormInputText = (props: IProps) => {
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <TextField {...field} label={label} fullWidth error={!!error} helperText={error?.message || null} />
+        <TextField
+          {...field}
+          size="small"
+          label={label}
+          fullWidth
+          error={!!error}
+          helperText={error?.message || null}
+        />
       )}
       defaultValue=""
     />

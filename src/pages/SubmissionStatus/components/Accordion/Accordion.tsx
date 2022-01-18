@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import { ISubmissionResponse } from 'common/types/submission';
 import dayjs from 'dayjs';
 import * as React from 'react';
+import { useState } from 'react';
+import AccordionItem from './AccordionItem';
 
 interface IProps {
   submissionStatus: ISubmissionResponse;
@@ -14,7 +16,7 @@ interface IProps {
 export default function ControlledAccordions(props: IProps) {
   const { submissionStatus: { submissions = [] } = {} } = props || {};
 
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
@@ -31,25 +33,7 @@ export default function ControlledAccordions(props: IProps) {
       </Accordion>
 
       {submissions.map((obj) => {
-        const { submissionNo, createdDate, feedbackStatus, feedback } = obj;
-        const key = submissionNo.toString();
-
-        return (
-          <Accordion elevation={2} key={key} expanded={expanded === key} onChange={handleChange(key)}>
-            <AccordionSummary aria-controls={key + 'bh-content'} id={key + 'bh-header'}>
-              <Typography sx={{ width: '20%', flexShrink: 0 }}>{submissionNo}</Typography>
-              <Typography sx={{ width: '30%', flexShrink: 0, color: 'text.secondary' }}>{feedbackStatus}</Typography>
-              <Typography sx={{ width: '30%', color: 'text.secondary' }}>
-                {dayjs(createdDate).format('DD MMM YYYY H:mm A')}
-              </Typography>
-              <Button sx={{ width: '20%' }}>More</Button>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>Feedback</Typography>
-              <Typography>{feedback}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        );
+        return <AccordionItem expanded={expanded} handleChange={handleChange} submission={obj} />;
       })}
     </div>
   );
