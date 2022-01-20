@@ -4,7 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Run local
 
-Requires backend to be running: https://github.com/coupacoupa/gt-assignment-api
+Requires backend to be running:
+https://github.com/coupacoupa/gt-assignment-api
+
+Runs on port 3000
 
 In the project directory, you can run:
 
@@ -22,6 +25,27 @@ npm run build
 npm install -g serve
 serve -s build
 ```
+
+# User Flow
+
+Description on how to use applications
+
+## Submit Submission
+
+Using /submit route
+
+- Fill in form
+- Submit form
+
+## View Submissions
+
+As there is no authentication in place, Login fakes a login by saving email and contact to state
+
+Using /status route
+
+- Login
+- View submissions
+- Click on drop down list to view feedback
 
 ## Run performance test
 
