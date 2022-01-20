@@ -8,14 +8,18 @@ In the project directory, you can run:
 
 ### `run local build`
 
+```bash
 npm i
 npm run start
+```
 
 ### `run production build`
 
+```bash
 npm run build
 npm install -g serve
 serve -s build
+```
 
 ## Run performance test
 
