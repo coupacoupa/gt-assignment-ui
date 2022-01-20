@@ -66,3 +66,12 @@ Starts a spike test that
 - starts at 1 arrival rate for 10 seconds
 - ramps up to 20 arrival rate for 60 seconds
 - ramps down to 1 arrival rate for 10 seconds
+
+# `TODO`
+
+List of uncompleted task
+
+- Unit testing
+- Environment files
+- Error handling when backend service unreachable
+- User login and persisted user states
