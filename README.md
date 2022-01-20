@@ -59,6 +59,8 @@ Starts a mock load test that
 - ramps up to 5 arrival rate for 180 seconds
 - ramps down to 1 arrival rate for 30 seconds
 
+Results: 28% Request lost
+
 ### `npm run spike-test`
 
 Starts a spike test that
@@ -66,6 +68,8 @@ Starts a spike test that
 - starts at 1 arrival rate for 10 seconds
 - ramps up to 20 arrival rate for 60 seconds
 - ramps down to 1 arrival rate for 10 seconds
+
+Results: 41% Request lost
 
 # `TODO`
 
