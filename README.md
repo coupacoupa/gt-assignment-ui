@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Run local
 
+Requires backend to be running: https://github.com/coupacoupa/gt-assignment-api
+
 In the project directory, you can run:
 
 ### `run local build`
