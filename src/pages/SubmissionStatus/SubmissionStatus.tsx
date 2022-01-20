@@ -1,10 +1,11 @@
+import TablePagination from 'common/components/TablePagination';
 import { useUser } from 'common/contexts/userContext';
 import { useGetAllUserSubmission } from 'common/hooks/submission';
 import PageContainer from 'modules/PageContainer';
 import PaperHeader from 'modules/PageHeader';
 import React, { useEffect } from 'react';
 import Accordion from './components/Accordion';
-import AccordionPagination from './components/AccordionPagination';
+import CollapsibleTable from './components/Table';
 
 const SubmissionStatus = () => {
   const [page, setPage] = React.useState(0);
@@ -36,8 +37,8 @@ const SubmissionStatus = () => {
     <PageContainer maxWidth={'md'}>
       <>
         <PaperHeader title={'Submission Status'} subTitle={'View all your submission status'} />
-        <Accordion submissionStatus={data} />
-        <AccordionPagination
+        <CollapsibleTable submissionStatus={data} />
+        <TablePagination
           page={page}
           rowsPerPage={rowsPerPage}
           count={data?.totalCount || 0}

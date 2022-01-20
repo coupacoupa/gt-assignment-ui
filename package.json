@@ -33,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "load-test": "artillery run ./src/common/artillery/load-test.yml",
+    "spike-test": "artillery run ./src/common/artillery/spike-test.yml"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "artillery": "^2.0.0-10"
   }
 }

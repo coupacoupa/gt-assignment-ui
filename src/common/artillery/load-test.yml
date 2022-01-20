@@ -1,0 +1,26 @@
+config:
+  target: 'http://localhost:8080'
+  phases:
+    - duration: 30
+      arrivalRate: 1
+    - duration: 180
+      arrivalRate: 5
+    - duration: 30
+      arrivalRate: 1
+
+scenarios:
+  - name: 'Submit feedback'
+    flow:
+      - post:
+          url: '/api/v1/submissions'
+          json:
+            {
+              'name': 'name',
+              'email': 'email@email.com',
+              'contactNumber': '12345',
+              'agencyName': 'agencyName',
+              'feedback': 'feedback',
+            }
+      - think: 2
+      - get:
+          url: '/api/v1/submissions?email=email@email.com&contactNumber=12345'
